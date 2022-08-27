@@ -1,21 +1,21 @@
 package com.example.newsupdate
 
-import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.browser.customtabs.CustomTabsIntent
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonObjectRequest
+import androidx.appcompat.widget.Toolbar
+import androidx.viewpager.widget.ViewPager
 import com.example.newsupdate.databinding.ActivityMainBinding
+import com.google.android.material.tabs.TabLayout
 
 
-class MainActivity : AppCompatActivity(), NewsItemClicked {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var mAdapter: NewsListAdapter
+
+    private lateinit var pager: ViewPager // creating object of ViewPager
+    private lateinit var tab: TabLayout  // creating object of TabLayout
+    private lateinit var bar: Toolbar    // creating object of ToolBar
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,64 +23,25 @@ class MainActivity : AppCompatActivity(), NewsItemClicked {
         val view = binding.root
         setContentView(view)
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        fetchData()
-        mAdapter = NewsListAdapter(this)
-        binding.recyclerView.adapter = mAdapter
+        pager = binding.viewPager
+        tab = binding.tabs
+        bar = binding.toolbar
 
-        binding.refreshLayout.setOnRefreshListener {
-            fetchData()
-            Toast.makeText(this, "Refreshing Done", Toast.LENGTH_SHORT).show()
-            binding.refreshLayout.isRefreshing = false
-        }
+        // To make our toolbar show the application we need to give it to the ActionBar
+        setSupportActionBar(bar)
 
+        // Initializing the ViewPagerAdapter
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+
+        // add fragment to the list
+        adapter.addFragment(MainNewsFragment(), "sports")
+        adapter.addFragment(SportsNews(), "Crime")
+        adapter.addFragment(TechnologyNews(), "Technology")
+
+        // Adding the Adapter to the ViewPager
+        pager.adapter = adapter
+
+        // bind the viewPager with the TabLayout.
+        tab.setupWithViewPager(pager)
     }
-
-    private fun fetchData() {
-
-        val newsUrl =
-            "https://newsapi.org/v2/top-headlines?country=us&apiKey=ba37e8b185a24834837c12e258b4dfff"
-        // Request a string response from the provided URL.
-        val jsonObjectRequest = object : JsonObjectRequest(
-            Request.Method.GET, newsUrl, null,
-            {
-                val newsJsonArray = it.getJSONArray("articles")
-                val newsArray = ArrayList<News>()
-                for (i in 0 until newsJsonArray.length() - 1) {
-                    val newsJsonObject = newsJsonArray.getJSONObject(i)
-                    val news = News(
-                        newsJsonObject.getString("author"),
-                        newsJsonObject.getString("title"),
-                        newsJsonObject.getString("description"),
-                        newsJsonObject.getString("url"),
-                        newsJsonObject.getString("urlToImage"),
-                        newsJsonObject.getString("publishedAt")
-                    )
-                    newsArray.add(news)
-                }
-                mAdapter.updatedNews(newsArray)
-            },
-            {
-                Toast.makeText(this, "Couldn't load news because $it", Toast.LENGTH_SHORT).show()
-            }
-        ) {
-            override fun getHeaders(): MutableMap<String, String> {
-                val headers = HashMap<String, String>()
-                headers["User-Agent"] = "Mozilla/5.0"
-                return headers
-            }
-        }
-        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest)
-        // Add the request to the RequestQueue.
-    }
-
-
-    override fun onItemClicked(item: News) {
-        val newsUrl = item.url
-        val builder = CustomTabsIntent.Builder()
-        val customTabsIntent = builder.build()
-        customTabsIntent.launchUrl(this, Uri.parse(newsUrl))
-    }
-
-
 }
