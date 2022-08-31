@@ -1,28 +1,27 @@
 package com.example.newsupdate
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
 class NewsListAdapter(private val listener: NewsItemClicked) :
     RecyclerView.Adapter<NewsViewHolder>() {
+
+
     private val items: ArrayList<News> = ArrayList()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_news, parent, false)
         val viewHolder = NewsViewHolder(view)
+
         view.setOnClickListener {
             listener.onItemClicked(items[viewHolder.adapterPosition])
         }
-
-
 
         return viewHolder
     }

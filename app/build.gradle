@@ -64,7 +64,4 @@ dependencies {
 
     // Swipe to refresh dependency
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
-
-    // swipe cards left right
-    implementation 'com.lorentzos.swipecards:library:1.0.9'
 }
