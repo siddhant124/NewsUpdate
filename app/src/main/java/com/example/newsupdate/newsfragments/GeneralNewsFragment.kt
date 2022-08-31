@@ -1,4 +1,4 @@
-package com.example.newsupdate
+package com.example.newsupdate.newsfragments
 
 import android.net.Uri
 import android.os.Bundle
@@ -11,36 +11,39 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
-import com.example.newsupdate.databinding.FragmentMainNewsBinding
+import com.example.newsupdate.MySingleton
+import com.example.newsupdate.News
+import com.example.newsupdate.NewsItemClicked
+import com.example.newsupdate.NewsListAdapter
+import com.example.newsupdate.databinding.FragmentGeneralNewsBinding
 
 
-class MainNewsFragment : Fragment(), NewsItemClicked {
+open class GeneralNewsFragment : Fragment(), NewsItemClicked {
 
-    private lateinit var mainNewsBinding: FragmentMainNewsBinding
-    private lateinit var mAdapter: NewsListAdapter
+    private lateinit var generalNewsBinding: FragmentGeneralNewsBinding
+    lateinit var mAdapter: NewsListAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mainNewsBinding = FragmentMainNewsBinding.inflate(inflater, container, false)
-        mainNewsBinding.recyclerView.layoutManager = LinearLayoutManager(activity)
-        fetchData()
-        mAdapter = NewsListAdapter(this)
-        mainNewsBinding.recyclerView.adapter = mAdapter
+        generalNewsBinding = FragmentGeneralNewsBinding.inflate(inflater, container, false)
+        generalNewsBinding.recyclerView.layoutManager = LinearLayoutManager(activity)
 
-        mainNewsBinding.refreshLayout.setOnRefreshListener {
-            fetchData()
+        mAdapter = NewsListAdapter(this)
+        generalNewsBinding.recyclerView.adapter = mAdapter
+        fetchData("general")
+        generalNewsBinding.refreshLayout.setOnRefreshListener {
+            fetchData("general")
             Toast.makeText(context, "Refreshing Done", Toast.LENGTH_SHORT).show()
-            mainNewsBinding.refreshLayout.isRefreshing = false
+            generalNewsBinding.refreshLayout.isRefreshing = false
         }
 
-        return mainNewsBinding.root
+        return generalNewsBinding.root
     }
 
-    private fun fetchData() {
+    fun fetchData(newsType: String) {
         val newsUrl =
-            "https://newsapi.org/v2/top-headlines?country=us&apiKey=ba37e8b185a24834837c12e258b4dfff"
+            "https://newsapi.org/v2/top-headlines?country=in&category=$newsType&apiKey=ba37e8b185a24834837c12e258b4dfff"
         // Request a string response from the provided URL.
         val jsonObjectRequest = object : JsonObjectRequest(
             Request.Method.GET, newsUrl, null,

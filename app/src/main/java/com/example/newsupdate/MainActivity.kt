@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
+import com.example.newsupdate.adapters.ViewPagerAdapter
 import com.example.newsupdate.databinding.ActivityMainBinding
+import com.example.newsupdate.newsfragments.*
 import com.google.android.material.tabs.TabLayout
 
 
@@ -34,10 +36,13 @@ class MainActivity : AppCompatActivity() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
 
         // add fragment to the list
-        adapter.addFragment(MainNewsFragment(), "sports")
-        adapter.addFragment(SportsNews(), "Crime")
-        adapter.addFragment(TechnologyNews(), "Technology")
-
+        adapter.addFragment(GeneralNewsFragment(), "General")
+        adapter.addFragment(EntertainmentNewsFragment(), "Entertainment")
+        adapter.addFragment(TechnologyNewsFragment(), "Technology")
+        adapter.addFragment(ScienceNewsFragment(), "Science")
+        adapter.addFragment(HealthNewsFragment(), "Health")
+        adapter.addFragment(SportsNewsFragment(), "Sports")
+        adapter.addFragment(BusinessNewsFragment(), "Business")
         // Adding the Adapter to the ViewPager
         pager.adapter = adapter
 

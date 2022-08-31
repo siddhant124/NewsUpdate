@@ -1,4 +1,4 @@
-package com.example.newsupdate
+package com.example.newsupdate.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

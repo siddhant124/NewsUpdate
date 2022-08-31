@@ -4,18 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".newsfragments.TechnologyNewsFragment">
-
+    tools:context=".newsfragments.HealthNewsFragment">
 
     <!--Swipe Refresh Layout -->
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/techNewsRefreshLayout"
+        android:id="@+id/healthNewsRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/techNewsRecyclerView"
+            android:id="@+id/healthNewsRecyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -24,5 +23,4 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 </FrameLayout>
