@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.17447916666666666" />
+        <entry key="app/src/main/res/drawable/bookmark_disabled.xml" value="0.1745" />
+        <entry key="app/src/main/res/drawable/bookmark_enabled.xml" value="0.1745" />
+        <entry key="app/src/main/res/drawable/nav_menu.xml" value="0.1745" />
+        <entry key="app/src/main/res/drawable/profile.xml" value="0.1745" />
+        <entry key="app/src/main/res/drawable/share_news.xml" value="0.1745" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.17447916666666666" />
         <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.17447916666666666" />
         <entry key="app/src/main/res/layout/fragment_business_news.xml" value="0.17447916666666666" />
         <entry key="app/src/main/res/layout/fragment_entertainment_news.xml" value="0.17447916666666666" />
@@ -14,6 +20,8 @@
         <entry key="app/src/main/res/layout/fragment_sports_news.xml" value="0.17447916666666666" />
         <entry key="app/src/main/res/layout/fragment_technology_news.xml" value="0.17447916666666666" />
         <entry key="app/src/main/res/layout/item_news.xml" value="0.22" />
+        <entry key="app/src/main/res/menu/my_menu.xml" value="0.1734375" />
+        <entry key="app/src/main/res/menu/nav_menu.xml" value="0.17447916666666666" />
       </map>
     </option>
   </component>

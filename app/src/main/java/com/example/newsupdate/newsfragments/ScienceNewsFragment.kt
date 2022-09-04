@@ -28,7 +28,6 @@ class ScienceNewsFragment : GeneralNewsFragment() {
 
         scienceNewsBinding.scienceNewsRefreshLayout.setOnRefreshListener {
             fetchData("science")
-            Toast.makeText(context, "Refreshing Done", Toast.LENGTH_SHORT).show()
             scienceNewsBinding.scienceNewsRefreshLayout.isRefreshing = false
         }
         return scienceNewsBinding.root

@@ -23,7 +23,8 @@ open class GeneralNewsFragment : Fragment(), NewsItemClicked {
     private lateinit var generalNewsBinding: FragmentGeneralNewsBinding
     lateinit var mAdapter: NewsListAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         generalNewsBinding = FragmentGeneralNewsBinding.inflate(inflater, container, false)
@@ -34,7 +35,6 @@ open class GeneralNewsFragment : Fragment(), NewsItemClicked {
         fetchData("general")
         generalNewsBinding.refreshLayout.setOnRefreshListener {
             fetchData("general")
-            Toast.makeText(context, "Refreshing Done", Toast.LENGTH_SHORT).show()
             generalNewsBinding.refreshLayout.isRefreshing = false
         }
 
