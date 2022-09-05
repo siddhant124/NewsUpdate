@@ -28,7 +28,6 @@ class HealthNewsFragment : GeneralNewsFragment() {
 
         healthNewsBinding.healthNewsRefreshLayout.setOnRefreshListener {
             fetchData("health")
-            Toast.makeText(context, "Refreshing Done", Toast.LENGTH_SHORT).show()
             healthNewsBinding.healthNewsRefreshLayout.isRefreshing = false
         }
 

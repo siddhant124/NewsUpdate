@@ -28,7 +28,6 @@ class BusinessNewsFragment : GeneralNewsFragment() {
 
         businessNewsBinding.businessNewsRefreshLayout.setOnRefreshListener {
             fetchData("business")
-            Toast.makeText(context, "Refreshing Done", Toast.LENGTH_SHORT).show()
             businessNewsBinding.businessNewsRefreshLayout.isRefreshing = false
         }
 

@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="20dp"
     app:cardElevation="10dp"
-    android:layout_marginTop="50dp"
+    android:layout_marginTop="20dp"
     android:layout_marginBottom="50dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
@@ -19,7 +18,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="20dp">
+        android:paddingStart="20dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="20dp">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -95,6 +96,35 @@
             app:layout_constraintTop_toBottomOf="@id/newsHeadline"
             app:layout_constraintVertical_bias="0.0"
             tools:layout_editor_absoluteX="13dp" />
+
+
+        <LinearLayout
+            android:layout_width="74dp"
+            android:layout_height="35dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/newsDescription">
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/bookMarkNews"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="visible"
+                android:background="@drawable/bookmark_disabled" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/shareNews"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/share_news_icon" />
+
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

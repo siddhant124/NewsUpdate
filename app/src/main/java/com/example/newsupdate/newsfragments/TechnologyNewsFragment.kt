@@ -29,7 +29,6 @@ class TechnologyNewsFragment : GeneralNewsFragment() {
 
         technologyNewsBinding.techNewsRefreshLayout.setOnRefreshListener {
             fetchData("technology")
-            Toast.makeText(context, "Refreshing Done", Toast.LENGTH_SHORT).show()
             technologyNewsBinding.techNewsRefreshLayout.isRefreshing = false
         }
 
