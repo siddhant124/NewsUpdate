@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Development/app/src/main/res/layout/activity_bookmarks_page.xml" value="0.25" />
+        <entry key="..\:/Android Development/app/src/main/res/layout/activity_profile.xml" value="0.25" />
+        <entry key="..\:/Android Development/app/src/main/res/layout/fragment_health_news.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Development/app/src/main/res/layout/item_news.xml" value="0.25" />
+        <entry key="..\:/Android Development/app/src/main/res/xml/main_preference.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/drawable/bookmark_disabled.xml" value="0.1745" />
         <entry key="app/src/main/res/drawable/bookmark_enabled.xml" value="0.1745" />
         <entry key="app/src/main/res/drawable/close_fab_icon.xml" value="0.1" />
